@@ -1,11 +1,13 @@
 # Al Zorah — Blog / Insights
 
-Two production-ready, self-contained pages for the Al Zorah blog, matched to the
-theme, colours, fonts and chrome of **alzorahcity.com**.
+A production-ready, self-contained blog for Al Zorah — a listing page plus nine
+article pages — matched to the theme, colours, fonts and chrome of **alzorahcity.com**.
+`index.html` is the root/home so it deploys correctly on any static host (Vercel,
+GitHub Pages, Netlify).
 
 | File | Purpose |
 |------|---------|
-| `blog.html` | Main blog **listing** page — hero, category filter, featured post, 9-article grid, register-interest CTA |
+| `index.html` | Main blog **listing** page — hero, category filter, featured post, 9-article grid, register-interest CTA |
 | `blog-villas.html` | Article — Villas for Sale in Ajman (Content-Plan brief #1) — also the **canonical template** all articles mirror |
 | `blog-apartments.html` | Article — Apartments for Sale in Ajman (brief #2) |
 | `blog-beachfront-villas.html` | Article — Beachfront Villas in Ajman (brief #3) |
@@ -57,7 +59,7 @@ Because the pages load fonts/images by relative path, open them through a server
 ```bash
 cd "D:\Code Files\al-zohra"
 python -m http.server 8000
-# then visit http://localhost:8000/blog.html
+# then visit http://localhost:8000/index.html
 ```
 
 ## Integrating into the Laravel site
