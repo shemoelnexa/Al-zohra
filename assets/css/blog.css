@@ -45,6 +45,16 @@
     --accent-deep: #000000;  /* prose links → black                   */
     --accent-bright:#ffffff; /* accent on dark surfaces → white       */
 
+    /* AZDC brand secondary/tertiary — opt-in per page via .theme-brand */
+    --forest:     #25362d;   /* Forest Green  (secondary)             */
+    --teal:       #285353;   /* Teal Green    (secondary)             */
+    --olive:      #425a3b;   /* Olive Green   (tertiary)              */
+    --lime:       #92da6c;   /* Fresh Lime    (tertiary)              */
+    --lime-soft:  #b7df85;   /* Soft Lime     (tertiary)              */
+    --frost:      #479297;   /* Frost Blue    (tertiary)              */
+    --mint:       #76d7c7;   /* Fresh Mint    (tertiary)              */
+    --aqua:       #99ecfb;   /* Light Aqua    (tertiary)              */
+
     --font-display: 'Monotype-Regular', 'Cormorant Garamond', Georgia, serif;
     --font-body:    'ScalaSans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     --font-label:   'ChongModern', 'ScalaSans', Arial, sans-serif;
@@ -751,6 +761,47 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
     .js [data-reveal] { opacity: 1; transform: none; transition: none; }
     * { scroll-behavior: auto !important; }
 }
+
+/* =====================================================================
+   BRAND-ACCENTED ARTICLE  (opt-in via body.theme-brand)
+   Layers the AZDC secondary/tertiary palette onto an otherwise
+   monochrome site — greens & blues used as accents only.
+   ===================================================================== */
+.theme-brand .prose h2 { position: relative; }
+.theme-brand .prose h2::before {
+    content: ""; display: block;
+    width: 46px; height: 3px; margin-bottom: 20px;
+    background: linear-gradient(90deg, var(--teal), var(--mint));
+    border-radius: 2px;
+}
+.theme-brand .prose a:not(.btn) { color: var(--teal); border-bottom-color: rgba(40,83,83,0.35); }
+.theme-brand .prose a:not(.btn):hover { color: var(--forest); border-bottom-color: var(--forest); }
+.theme-brand .prose ul li::before { border-color: var(--teal); }
+.theme-brand .prose ol li::before { color: var(--teal); }
+.theme-brand .pullquote { border-left-color: var(--teal); color: var(--forest); }
+.theme-brand .note {
+    background: rgba(118,215,199,0.10);
+    border-color: rgba(40,83,83,0.18);
+    border-left-color: var(--teal);
+}
+.theme-brand .note__icon { color: var(--teal); }
+.theme-brand .compare-table thead th { background: var(--forest); }
+.theme-brand .compare-table tbody tr:nth-child(even) { background: rgba(118,215,199,0.08); }
+.theme-brand .keyfacts {
+    border-color: rgba(40,83,83,0.20);
+    background: linear-gradient(180deg, rgba(118,215,199,0.10), rgba(255,255,255,0));
+}
+.theme-brand .keyfacts h4 { color: var(--teal); }
+.theme-brand .keyfacts dt { color: var(--frost); }
+.theme-brand .keyfacts dd { color: var(--forest); }
+.theme-brand .faq-item button::after { color: var(--teal); }
+.theme-brand .tag-pill { background: var(--teal); color: #fff; }
+.theme-brand .mp-tag { color: var(--teal); }
+.theme-brand .section--soft .eyebrow { color: var(--teal); }
+.theme-brand .section--soft .eyebrow::before { background: var(--teal); }
+.theme-brand .cta-band .eyebrow { color: var(--mint); }
+.theme-brand .cta-band .eyebrow::before { background: var(--mint); }
+.theme-brand .btn--accent { --bg-btn: var(--teal); --fg-btn: #fff; }
 
 /* =====================================================================
    RESPONSIVE
