@@ -233,8 +233,8 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 .hero__inner {
     position: relative; z-index: 2; max-width: 940px; width: 100%;
     display: grid;
-    grid-template-columns: 1.7fr 1fr;
-    gap: clamp(28px, 3.6vw, 52px);
+    grid-template-columns: 1fr auto;
+    gap: clamp(28px, 3.6vw, 50px);   /* same as horizontal padding */
     align-items: center;
     background: rgba(8, 8, 8, 0.30);
     backdrop-filter: blur(14px) saturate(115%);
@@ -255,7 +255,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 .hero p {
     font-size: clamp(16px, 1.5vw, 19px);
     color: rgba(255,255,255,0.82);
-    max-width: 620px;
+    max-width: none;
     margin: 0;
 }
 .hero__meta {
