@@ -101,57 +101,53 @@ button { font-family: inherit; cursor: pointer; }
 .eyebrow.centered { justify-content: center; }
 .display { font-family: var(--font-display); }
 
-/* ----------  CTAs — "explore" style (thin line above an uppercase
-   label), matching alzorahcity.com. Text-only, no box.  ---------- */
+/* ----------  Buttons — box CTAs: outline by default, opaque on hover  ---------- */
 .btn {
-    --cta: var(--ink);                 /* line + label colour           */
-    display: inline-block;
-    font-family: var(--font-body);
+    --bg-btn: var(--ink);
+    --fg-btn: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-label);
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     font-size: 12px;
-    font-weight: 400;
-    color: var(--cta);
-    background: transparent;
-    border: 0;
-    padding: 22px 0 2px;               /* head-room for the line above  */
-    text-decoration: underline;
-    text-decoration-color: var(--cta);
-    text-decoration-thickness: 1px;
-    text-underline-offset: -1.65em;    /* lift the underline above text */
-    transition: opacity 0.25s var(--ease), color 0.25s var(--ease);
+    padding: 15px 32px;
+    background: transparent;           /* outline by default */
+    color: var(--bg-btn);
+    border: 1px solid var(--bg-btn);
+    border-radius: var(--radius);      /* box */
+    transition: all 0.3s var(--ease);
     white-space: nowrap;
     cursor: pointer;
 }
-.btn:hover { opacity: 0.6; }
-.btn .arrow { display: none; }         /* explore style is text-only    */
+.btn:hover { background: var(--bg-btn); color: var(--fg-btn); }  /* opaque fill on hover */
+.btn--ghost { color: var(--ink); border-color: var(--ink); }
+.btn--accent { --bg-btn: var(--accent); --fg-btn: #fff; }
+/* "Register interest" on dark chrome — white outline, fills white on hover */
+.btn--on-dark { color: #fff; border-color: rgba(255,255,255,0.6); }
+.btn--on-dark:hover { background: #fff; color: var(--ink); border-color: #fff; }
+/* Newsletter submit on the dark band — white outline → filled white */
+.cta-band .signup .btn--accent { --bg-btn: #fff; --fg-btn: var(--ink); }
+.btn--wide { width: 100%; justify-content: center; }
+.btn .arrow { transition: transform 0.3s var(--ease); }
+.btn:hover .arrow { transform: translateX(4px); }
 
-/* CTAs on dark chrome (header, hero, CTA band, sidebar CTA) → white */
-.btn--on-dark,
-.cta-band .btn,
-.widget--cta .btn { --cta: #fff; }
-
-/* modifiers retained as no-ops so existing markup keeps working */
-.btn--ghost, .btn--accent, .btn--wide { background: transparent; border: 0; }
-
-/* "Read more" links — same explore style, one tier lighter (grey) */
 .textlink {
-    font-family: var(--font-body);
+    font-family: var(--font-label);
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     font-size: 12px;
-    font-weight: 400;
-    color: var(--gray);
-    display: inline-block;
-    padding-top: 20px;
-    text-decoration: underline;
-    text-decoration-color: currentColor;
-    text-decoration-thickness: 1px;
-    text-underline-offset: -1.55em;
-    transition: color 0.25s var(--ease);
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px;
 }
-.textlink .arrow { display: none; }
-.textlink:hover { color: var(--ink); }
+.textlink .arrow { transition: transform 0.3s var(--ease); }
+.textlink:hover { border-bottom-color: currentColor; }
+.textlink:hover .arrow { transform: translateX(5px); }
 
 /* =====================================================================
    HEADER  (dark ink chrome — matches the site's dark hero + footer)
@@ -213,12 +209,12 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
    ===================================================================== */
 .hero {
     position: relative;
-    min-height: 58vh;
+    min-height: 94vh;
     display: flex;
     align-items: flex-end;
     color: #fff;
-    padding-bottom: clamp(40px, 6vw, 76px);
-    padding-top: calc(var(--header-h) + 32px);
+    padding-bottom: 0;
+    padding-top: calc(var(--header-h) + 28px);
     background: var(--ink);
     overflow: hidden;
 }
@@ -235,17 +231,19 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
     background: linear-gradient(180deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.05) 42%, rgba(0,0,0,0.66) 100%);
 }
 .hero__inner {
-    position: relative; z-index: 2; max-width: 720px;
+    position: relative; z-index: 2; max-width: 940px; width: 100%;
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: clamp(28px, 3.6vw, 52px);
+    align-items: center;
     background: rgba(8, 8, 8, 0.30);
     backdrop-filter: blur(14px) saturate(115%);
     -webkit-backdrop-filter: blur(14px) saturate(115%);
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 8px;
-    padding: clamp(26px, 3.4vw, 44px) clamp(26px, 3.6vw, 48px);
+    padding: clamp(28px, 3.4vw, 46px) clamp(28px, 3.6vw, 50px);
     box-shadow: 0 30px 60px -34px rgba(0, 0, 0, 0.7);
 }
-.hero .eyebrow { color: var(--accent-bright); }
-.hero .eyebrow::before { background: var(--accent-bright); }
 .hero h1 {
     font-family: var(--font-display);
     color: #fff;
@@ -261,9 +259,9 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
     margin: 0;
 }
 .hero__meta {
-    display: flex; gap: 40px; flex-wrap: wrap;
-    margin-top: 30px; padding-top: 26px;
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    display: flex; flex-direction: column; gap: 20px;
+    padding-left: clamp(24px, 2.6vw, 40px);
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
 }
 .hero__meta div span {
     display: block;
@@ -586,9 +584,9 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
     letter-spacing: 0.02em;
 }
 .prose a { color: var(--accent-deep); border-bottom: 1px solid rgba(0,0,0,0.35); }
-/* buttons inside prose must not inherit the text-link bottom underline */
-.prose a.btn { color: var(--cta); border-bottom: 0; }
-.prose a.btn:hover { color: var(--cta); }
+/* buttons inside prose must not inherit the text-link colour/underline */
+.prose a.btn { color: var(--bg-btn); border-bottom: 0; }
+.prose a.btn:hover { color: var(--fg-btn); }
 .prose a:hover { border-color: var(--accent-deep); }
 .prose ul, .prose ol { margin: 0 0 26px; padding-left: 4px; list-style: none; }
 .prose ul li, .prose ol li { position: relative; padding-left: 30px; margin-bottom: 13px; color: var(--gray); }
@@ -780,6 +778,12 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
     .main-nav a { font-size: 15px; padding: 14px 0; }
     .featured { grid-template-columns: 1fr; }
     .featured__media { min-height: 280px; }
+    .hero__inner { grid-template-columns: 1fr; gap: 28px; }
+    .hero__meta {
+        flex-direction: row; flex-wrap: wrap; gap: 28px 40px;
+        padding-left: 0; padding-top: 26px;
+        border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
     .cta-band .wrap { grid-template-columns: 1fr; gap: 34px; }
     .signup .field-row { flex-direction: column; }
     .site-header { position: absolute; }
