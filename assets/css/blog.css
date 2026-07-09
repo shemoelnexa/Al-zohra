@@ -211,10 +211,9 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
     position: relative;
     min-height: 94vh;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     color: #fff;
-    padding-bottom: 0;
-    padding-top: calc(var(--header-h) + 28px);
+    padding-block: clamp(40px, 6vw, 68px);
     background: var(--ink);
     overflow: hidden;
 }
@@ -232,16 +231,17 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 }
 .hero__inner {
     position: relative; z-index: 2; max-width: 940px; width: 100%;
+    margin-inline: auto;
     display: grid;
     grid-template-columns: 1fr auto;
-    gap: clamp(28px, 3.6vw, 50px);   /* same as horizontal padding */
+    gap: clamp(28px, 3.3vw, 46px);   /* matches the card padding */
     align-items: center;
     background: rgba(8, 8, 8, 0.30);
     backdrop-filter: blur(14px) saturate(115%);
     -webkit-backdrop-filter: blur(14px) saturate(115%);
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 8px;
-    padding: clamp(28px, 3.4vw, 46px) clamp(28px, 3.6vw, 50px);
+    padding: clamp(28px, 3.3vw, 46px);   /* equal on all four sides */
     box-shadow: 0 30px 60px -34px rgba(0, 0, 0, 0.7);
 }
 .hero h1 {
