@@ -211,9 +211,10 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
     position: relative;
     min-height: 94vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     color: #fff;
-    padding-block: clamp(40px, 6vw, 68px);
+    padding-top: calc(var(--header-h) + 28px);
+    padding-bottom: 0;
     background: var(--ink);
     overflow: hidden;
 }
