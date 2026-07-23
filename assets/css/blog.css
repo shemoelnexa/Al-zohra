@@ -473,12 +473,29 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
     color: rgba(255,255,255,0.62);
     position: relative;
 }
-/* Design variation on the flat black: a centred gradient hairline caps
-   the footer, giving a subtle sense of light and depth. */
+/* Separator between the black register band and the black footer:
+   a luminous white seam capped by a centred rotated-diamond node — the
+   same motif used for list bullets. Keeps the two dark sections from
+   reading as one flat block. */
 .site-footer::before {
     content: "";
     position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22) 50%, transparent);
+    background: linear-gradient(90deg,
+        transparent 6%,
+        rgba(255,255,255,0.65) 26%,
+        #ffffff 50%,
+        rgba(255,255,255,0.65) 74%,
+        transparent 94%);
+    box-shadow: 0 0 20px rgba(255,255,255,0.25);
+}
+.site-footer::after {
+    content: "";
+    position: absolute; top: -4px; left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 9px; height: 9px;
+    background: #ffffff;
+    box-shadow: 0 0 16px rgba(255,255,255,0.6);
+    z-index: 1;
 }
 .footer-grid {
     display: grid;
