@@ -510,7 +510,10 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
     display: flex; align-items: flex-start;
     border-right: 1px solid rgba(255,255,255,0.08);
 }
-.footer-brand img { width: 180px; height: auto; }
+/* logo.png has ~40% built-in transparent padding above/below the wordmark
+   (it's designed to be centered, as in the header); pull it up so the
+   visible glyph's top edge lines up with the column headings' top edge. */
+.footer-brand img { width: 180px; height: auto; margin-top: -24.9px; }
 .footer-cols {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
